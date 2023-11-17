@@ -1,0 +1,63 @@
+{
+    "//": "BR Item Shop Config",
+    "daily1": {
+        "itemGrants": [
+            "AthenaGlider:Glider_ID_010_Storm"
+        ],
+        "price": 1200
+    },
+    "daily2": {
+        "itemGrants": [
+            "AthenaPickaxe:Pickaxe_ID_014_WinterCamo"
+        ],
+        "price": 500
+    },
+    "daily3": {
+        "itemGrants": [
+            "AthenaItemWrap:Wrap_018_Magma"
+        ],
+        "price": 700
+    },
+    "daily4": {
+        "itemGrants": [
+            "AthenaCharacter:CID_229_Athena_Commando_F_DarkBomber","AthenaBackpack:BID_126_DarkBomber"
+        ],
+        "price": 1200
+    },
+    "daily5": {
+        "itemGrants": [
+            "AthenaCharacter:CID_016_Athena_Commando_F"
+        ],
+        "price": 800
+    },
+    "daily6": {
+        "itemGrants": [
+            "AthenaDance:EID_Wizard"
+        ],
+        "price": 800
+    },
+    "featured1": {
+        "itemGrants": [
+            "AthenaCharacter:CID_269_Athena_Commando_M_Wizard","AthenaBackpack:BID_149_Wizard"
+        ],
+        "price": 1500
+    },
+    "featured2": {
+        "itemGrants": [
+            "AthenaCharacter:CID_270_Athena_Commando_F_Witch","AthenaBackpack:BID_150_Witch"
+        ],
+        "price": 1500
+    },
+    "featured3": {
+        "itemGrants": [
+            "AthenaPickaxe:Pickaxe_ID_122_Witch"
+    ],
+    "price": 800
+    },
+    "featured4": {
+        "itemGrants": [
+            "AthenaGlider:Glider_ID_095_Witch"
+    ],
+    "price": 1200
+}
+}

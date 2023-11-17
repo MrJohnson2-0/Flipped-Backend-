@@ -1,0 +1,12 @@
+{
+    "mods": ["1134975525077659778"],
+    
+    "BotInformation": {
+        "bot_token": "MTE2NTQ0ODE5Nzc5NjI2NjA1NQ.GI5YWk.jgp0JsXlsjSlOWD47bLqzfI57KpU3UuiWZaqpA"
+    },
+    "Mongodb": {
+        "database": "mongodb://127.0.0.1/momentum"
+    },
+    "MatchMakerIP": "127.0.0.1:8050",
+    "GameServerIP": "127.0.0.1:7777"
+}
