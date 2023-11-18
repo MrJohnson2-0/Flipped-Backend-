@@ -1,7 +1,7 @@
 const { Client, Intents, MessageEmbed } = require("discord.js"); // Discord.js v12 or v14 but WHY v13
 const client = new Client({ intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ] });
 const fs = require("fs");
-const globals = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
+const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
 const log = require("../Debugging/logs.js");
 
 client.once("ready", () => {
@@ -27,4 +27,4 @@ client.on("interactionCreate", interaction => {
     }
 });
 
-client.login(globals.BotInformation.bot_token);
+client.login(config.BotInformation.bot_token);
