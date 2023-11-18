@@ -11,7 +11,7 @@ const errorHandler = require("./Debugging/error.js")
 const functions = require("./Functions/functions.js")
 
 
-if (!fs.existsSync("./Settings")) fs.mkdirSync("./Settings");
+if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
 global.JWT_SECRET = functions.MakeID();
 const PORT = 3551;
