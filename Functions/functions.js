@@ -72,8 +72,8 @@ function GetVersionInfo(req) {
                 memory.CL = CL;
                 memory.lobby = "LobbySeason1";
             } else {
-                memory.season = 19;
-                memory.build = 19.0;
+                memory.season = 2;
+                memory.build = 2.0;
                 memory.CL = CL;
                 memory.lobby = "LobbyWinterDecor";
             }

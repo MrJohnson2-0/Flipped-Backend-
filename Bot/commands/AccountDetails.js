@@ -21,7 +21,6 @@ module.exports = {
             { name: "Created", value: `${new Date(user.created)}`.substring(0, 15) },
             { name: "Online", value: `${onlineStatus ? "Yes" : "No"}` },
             { name: "Banned", value: `${user.banned ? "Yes" : "No"}` },
-            { name: "Account ID", value: user.accountId },
             { name: 'Username', value: user.username },
             { name: 'Email', value: `||${user.email}||` },
             { name: 'Kills', value: `${user.statisticsKills}` },

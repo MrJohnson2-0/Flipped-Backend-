@@ -5,7 +5,6 @@ const fs = require("fs");
 const rateLimit = require("express-rate-limit");
 const jwt = require("jsonwebtoken");
 const globals = JSON.parse(fs.readFileSync("./Globals/Globals.json").toString());
-const cron = require('node-cron');
 const log = require("./Debugging/Logs.js")
 const errorHandler = require("./Debugging/error.js")
 const functions = require("./Functions/functions.js")
