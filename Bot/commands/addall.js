@@ -17,7 +17,7 @@ module.exports = {
             }
         ]
     },
-    execute: async (interaction) {
+    execute: async (interaction) => {
     const __dirname = dirname(import.meta);
     const selectedUser = interaction.options.getUser('user');
     const user = await UserFlags.findOne({ accountId: user.accountId});
