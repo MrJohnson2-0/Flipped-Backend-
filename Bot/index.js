@@ -1,8 +1,8 @@
 const { Client, Intents, MessageEmbed } = require("discord.js"); // Discord.js v12 or v14 but WHY v13
 const client = new Client({ intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ] });
 const fs = require("fs");
-const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
-const log = require("../Debugging/log.js");
+const globals = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
+const log = require("../Debugging/logs.js");
 
 client.once("ready", () => {
     log.bot("Bot is up and running!");
@@ -14,9 +14,6 @@ client.once("ready", () => {
 
         commands.create(command.commandInfo);
     });
-    sendStaticMessage();
-    // Updates every, uh idk. My math teacher hates me anyways.
-    setInterval(sendStaticMessage, 1 * 10 * 1000);
 });
 
 
@@ -30,4 +27,4 @@ client.on("interactionCreate", interaction => {
     }
 });
 
-client.login(config.discord.bot_token);
+client.login(globals.BotInformation.bot_token);

@@ -3,7 +3,7 @@ const fs = require("fs");
 const app = express.Router();
 const path = require("path");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 
 const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
 

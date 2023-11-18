@@ -4,7 +4,7 @@ const Profile = require("../AccountHandling/profiles.js");
 const Friends = require("../AccountHandling/friends.js");
 const functions = require("../Functions/functions.js");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 const keychain = require("../Keychain/keychain.json");
 
 app.get("/fortnite/api/storefront/v2/catalog", (req, res) => {

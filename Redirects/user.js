@@ -3,7 +3,7 @@ const app = express.Router();
 
 const error = require("../Debugging/error.js");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 const User = require("../AccountHandling/user.js");
 
 app.get("/account/api/public/account", async (req, res) => {

@@ -1,4 +1,4 @@
-const functions = require("../structs/functions.js");
+const functions = require("../Functions/functions.js");
 const jwt = require("jsonwebtoken");
 
 function createClient(clientId, grant_type, ip, expiresIn) {

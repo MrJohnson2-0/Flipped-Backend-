@@ -3,8 +3,8 @@ const functions = require("../../Functions/functions.js");
 
 module.exports = {
     commandInfo: {
-        name: "Register",
-        description: "Register an Account on Flipped",
+        name: "create",
+        description: "Register An Account On Flipped",
         options: [
             {
                 name: "email",
@@ -35,31 +35,20 @@ module.exports = {
         const email = options.get("email").value;
         const username = options.get("username").value;
         const password = options.get("password").value;
-        const user = await Users.findOne({ discordId: interaction.user.id });
 
         await functions.registerUser(discordId, username, email, password, false).then(resp => {
-            const publicEmbed = new EmbedBuilder()
-            .setTitle("New registration")
-            .setColor("#FFFFFF")
-            .setThumbnail(interaction.user.avatarURL({ format: 'png', dynamic: true, size: 256 }))
-            .addFields({
-                name: "Message",
-                value: "Successfully created an account.",
-            }, {
-                name: "Username",
-                value: username,
-            }, {
-                name: "Discord Tag",
-                value: interaction.user.tag,
-            })
-            .setColor("#FFFFFF")
-            .setFooter({
-                text: "Flipped",
-                iconURL: "https://i.ibb.co/8sd2063/image.png",
-            })
-            .setTimestamp();
-        }).catch((err) => {
-            log.error(err);
+            let embed = new MessageEmbed()
+            .setColor(resp.status >= 400 ? "#ff0000" : "#56ff00")
+            .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL() })
+            .setFields(
+                { name: 'Message', value: resp.message },
+            )
+            .setTimestamp()
+
+            if (resp.status >= 400) return interaction.editReply({ embeds: [embed], ephemeral: true });
+
+            (interaction.channel ? interaction.channel : interaction.user).send({ embeds: [embed] });
+            interaction.editReply({ content: "You successfully created an account!", ephemeral: true });
         });
     }
 }

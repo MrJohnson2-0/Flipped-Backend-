@@ -287,7 +287,6 @@ async function registerUser(discordId, username, email, plainPassword, isServer)
     const hashedPassword = await bcrypt.hash(plainPassword, 10);
     const lowercaseEmail = email.toLowerCase();
     try {
-        log.debug(`Creating account with the username ${username} and email ${lowercaseEmail}`);
         await User.create({
             created: new Date().toISOString(),
             banned: false,
@@ -302,15 +301,12 @@ async function registerUser(discordId, username, email, plainPassword, isServer)
             GivenFullLocker: false,
             Reports: 0,
         }).then(async (i) => {
-            log.debug(`Created user with the username ${username} and email ${lowercaseEmail}`);
             await Profile.create({
                 created: i.created,
                 accountId: i.accountId,
                 profiles: await profileManager.createProfiles(i.accountId ? i.accountId : "")
             });
-            log.debug(`Created profile for the user with the username ${username} and email ${lowercaseEmail}`);
             await Friends.create({ created: i.created, accountId: i.accountId });
-            log.debug(`Created friends for the user with the username ${username} and email ${lowercaseEmail}`);
         });
     }
     catch (err) {
@@ -338,8 +334,6 @@ function UpdateTokens() {
 
 module.exports = {
     sleep,
-    advancedLog,
-    makeShop,
     GetVersionInfo,
     getContentPages,
     getItemShop,

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const User = require("../../model/user.js");
+const User = require("../../AccountHandling/user.js");
 const fs = require("fs");
 const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
 

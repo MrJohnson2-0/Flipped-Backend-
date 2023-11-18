@@ -2,7 +2,7 @@ const Users = require("../../AccountHandling/user.js");
 const functions = require("../../Functions/functions.js");
 const Profiles = require("../../AccountHandling/profiles.js");
 const fs = require("fs");
-const config = JSON.parse(fs.readFileSync("./Globals/config.json").toString());
+const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
 
 module.exports = {
     commandInfo: {

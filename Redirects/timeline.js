@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express.Router();
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 const functions = require("../Functions/functions.js");
 
 app.get("/fortnite/api/calendar/v1/timeline", (req, res) => {

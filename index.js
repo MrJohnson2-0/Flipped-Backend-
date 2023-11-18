@@ -10,11 +10,13 @@ const log = require("./Debugging/Logs.js")
 const errorHandler = require("./Debugging/error.js")
 const functions = require("./Functions/functions.js")
 
-global.JWT_SECRET = functions.MakeID();
-if (!fs.existsSync("../Settings")) fs.mkdirSync("../Settings");
 
+if (!fs.existsSync("./Settings")) fs.mkdirSync("./Settings");
+
+global.JWT_SECRET = functions.MakeID();
 const PORT = 3551;
-const tokens = JSON.parse(fs.readFileSync("../TokenHandler/tokens.json").toString());
+
+const tokens = JSON.parse(fs.readFileSync("./TokenHandler/tokens.json").toString());
 
 for (let tokenType in tokens) {
     for (let tokenIndex in tokens[tokenType]) {
@@ -26,7 +28,7 @@ for (let tokenType in tokens) {
     }
 }
 
-fs.writeFileSync("../TokenHandler/tokens.json", JSON.stringify(tokens, null, 2));
+fs.writeFileSync("./TokenHandler/tokens.json", JSON.stringify(tokens, null, 2));
 
 global.accessTokens = tokens.accessTokens;
 global.refreshTokens = tokens.refreshTokens;
@@ -34,14 +36,12 @@ global.clientTokens = tokens.clientTokens;
 
 global.exchangeCodes = [];
 
-mongoose.connect(config.mongodb.database, () => {
+mongoose.connect(globals.Mongodb.database, () => {
     log.backend("App successfully connected to MongoDB!");
-    functions.advancedLog("SERVER", "Connected to Database");
 });
 
 mongoose.connection.on("error", err => {
     log.error("MongoDB failed to connect, please make sure you have MongoDB installed and running.");
-    functions.advancedLog("SERVER", "Error while connecting to Database");
     throw err;
 });
 
@@ -49,12 +49,12 @@ app.use(rateLimit({ windowMs: 0.5 * 60 * 1000, max: 45 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-fs.readdirSync("../Api").forEach(fileName => {
-    app.use(require(`../Api/${fileName}`));
+fs.readdirSync("./Api").forEach(fileName => {
+    app.use(require(`./Api/${fileName}`));
 });
 
-fs.readdirSync("../Redirects").forEach(fileName => {
-    app.use(require(`../Redirects/${fileName}`));
+fs.readdirSync("./Redirects").forEach(fileName => {
+    app.use(require(`./Redirects/${fileName}`));
 });
 
 app.listen(PORT, () => {
@@ -63,8 +63,7 @@ app.listen(PORT, () => {
     require("./Bot/index.js") ;
 }).on("error", async (err) => {
     if (err.code == "EADDRINUSE") {
-        log.error(`Port ${PORT} is already in use!\nClosing in 3 seconds...`);
-        functions.advancedLog("SERVER", "Server connection broke! Restarting...");
+        log.error(`Port ${PORT} is already in use!\nClosing in 3 seconds..`);
         await functions.sleep(3000)
         process.exit(0);
     } else throw err;

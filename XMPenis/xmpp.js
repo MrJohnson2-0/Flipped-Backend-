@@ -4,7 +4,7 @@ const XMLParser = require("xml-parser");
 const express = require("express");
 const app = express();
 
-const log = require("../Debugging/log.js");
+const log = require("../Debugging/logs.js");
 const functions = require("../Functions/functions.js");
 
 const User = require("../AccountHandling/user.js");
@@ -12,7 +12,7 @@ const Friends = require("../AccountHandling/friends.js");
 
 const port = 8050;
 const wss = new WebSocket({ server: app.listen(port) });
-const matchmaker = require("../matchmaker/matchmaker.js");
+const matchmaker = require("../WORKINGMATCHMAKER(CAP)/matchmake.js");
 
 global.xmppDomain = "prod.ol.epicgames.com";
 

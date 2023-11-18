@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express.Router();
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 
 app.get("/lightswitch/api/service/Fortnite/status", async (req, res) => {
     res.json({

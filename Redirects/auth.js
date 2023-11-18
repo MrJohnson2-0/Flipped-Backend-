@@ -7,8 +7,8 @@ const config = JSON.parse(fs.readFileSync("./Globals/globals.json").toString());
 const error = require("../Debugging/error.js");
 const functions = require("../Functions/functions.js");
 
-const tokenCreation = require("../TokenHandler/tokenCreation.js");
-const { verifyToken, verifyClient } = require("../Tokenhandler/tokenVerify.js");
+const tokenCreation = require("../TokenHandler/CreateAToken.js");
+const { verifyToken, verifyClient } = require("../Tokenhandler/TokenVerification.js");
 const User = require("../AccountHandling/user.js");
 
 app.post("/account/api/oauth/token", async (req, res) => {

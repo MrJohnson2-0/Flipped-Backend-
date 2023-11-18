@@ -2,7 +2,7 @@ const User = require("../../AccountHandling/user.js");
 
 module.exports = {
     commandInfo: {
-        name: "change-username",
+        name: "username",
         description: "Change your username.",
         options: [
             {

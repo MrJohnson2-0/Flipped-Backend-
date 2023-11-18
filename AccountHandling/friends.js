@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
-const ProfilesSchema = new mongoose.Schema(
+const FriendsSchema = new mongoose.Schema(
     {
         created: { type: Date, required: true },
         accountId: { type: String, required: true, unique: true },
-        profiles: { type: Object, required: true }
+        list: { type: Object, default: { accepted: [], incoming: [], outgoing: [], blocked: [] } }
     },
     {
-        collection: "profiles"
+        collection: "friends"
     }
 )
 
-const model = mongoose.model('ProfilesSchema', ProfilesSchema);
+const model = mongoose.model('FriendsSchema', FriendsSchema);
 
 module.exports = model;

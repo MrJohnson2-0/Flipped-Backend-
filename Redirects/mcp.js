@@ -7,7 +7,7 @@ const profileManager = require("../AccountHandling/profile.js");
 const error = require("../Debugging/error.js");
 const functions = require("../Functions/functions.js");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 
 global.giftReceived = {};
 

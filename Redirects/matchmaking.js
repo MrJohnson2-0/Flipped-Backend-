@@ -3,7 +3,7 @@ const app = express.Router();
 const fs = require("fs");
 const functions = require("../Functions/functions.js");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 
 let buildUniqueId = {};
 

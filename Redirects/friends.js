@@ -6,7 +6,7 @@ const functions = require("../Functions/functions.js");
 const Friends = require("../AccountHandling/friends.js");
 const friendManager = require("../AccountHandling/friend.js");
 
-const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/TokenVerification.js");
 
 app.get("/friends/api/v1/*/settings", (req, res) => {
     res.json({});

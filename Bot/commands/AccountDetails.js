@@ -3,7 +3,7 @@ const User = require("../../AccountHandling/user.js");
 
 module.exports = {
     commandInfo: {
-        name: "AccountDetails",
+        name: "accountdetails",
         description: "Shows You Your Account Details"
     },
     execute: async (interaction) => {
