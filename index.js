@@ -11,10 +11,10 @@ const errorHandler = require("./Debugging/error.js")
 const functions = require("./Functions/functions.js")
 
 global.JWT_SECRET = functions.MakeID();
-if (!fs.existsSync("./Settings")) fs.mkdirSync("./Settings");
+if (!fs.existsSync("../Settings")) fs.mkdirSync("../Settings");
 
 const PORT = 3551;
-const tokens = JSON.parse(fs.readFileSync("./TokenHandler/tokens.json").toString());
+const tokens = JSON.parse(fs.readFileSync("../TokenHandler/tokens.json").toString());
 
 for (let tokenType in tokens) {
     for (let tokenIndex in tokens[tokenType]) {
@@ -26,7 +26,7 @@ for (let tokenType in tokens) {
     }
 }
 
-fs.writeFileSync("./TokenHandler/tokens.json", JSON.stringify(tokens, null, 2));
+fs.writeFileSync("../TokenHandler/tokens.json", JSON.stringify(tokens, null, 2));
 
 global.accessTokens = tokens.accessTokens;
 global.refreshTokens = tokens.refreshTokens;
@@ -49,18 +49,18 @@ app.use(rateLimit({ windowMs: 0.5 * 60 * 1000, max: 45 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-fs.readdirSync("./Api").forEach(fileName => {
-    app.use(require(`./Api/${fileName}`));
+fs.readdirSync("../Api").forEach(fileName => {
+    app.use(require(`../Api/${fileName}`));
 });
 
-fs.readdirSync("./Redirects").forEach(fileName => {
-    app.use(require(`./Redirects/${fileName}`));
+fs.readdirSync("../Redirects").forEach(fileName => {
+    app.use(require(`../Redirects/${fileName}`));
 });
 
 app.listen(PORT, () => {
     log.backend(`App started listening on port ${PORT}`);
     require("./XMPenis/xmpp.js");
-    require("./DiscordBot") ;
+    require("./Bot/index.js") ;
 }).on("error", async (err) => {
     if (err.code == "EADDRINUSE") {
         log.error(`Port ${PORT} is already in use!\nClosing in 3 seconds...`);
@@ -69,3 +69,19 @@ app.listen(PORT, () => {
         process.exit(0);
     } else throw err;
 });
+
+// if endpoint not found, return this error
+app.use((req, res, next) => {
+    error.createError(
+        "errors.com.epicgames.common.not_found", 
+        "Sorry the resource you were trying to find could not be found", 
+        undefined, 1004, undefined, 404, res
+    );
+});
+
+function DateAddHours(pdate, number) {
+    let date = pdate;
+    date.setHours(date.getHours() + number);
+
+    return date;
+}
