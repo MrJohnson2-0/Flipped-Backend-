@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express.Router();
 
-const error = require("../structs/error.js");
+const error = require("../Debugging/error.js");
 
-const { verifyToken, verifyClient } = require("../tokenManager/tokenVerify.js");
-const User = require("../model/user.js");
+const { verifyToken, verifyClient } = require("../TokenHandler/tokenVerify.js");
+const User = require("../AccountHandling/user.js");
 
 app.get("/account/api/public/account", async (req, res) => {
     let response = [];
