@@ -3,8 +3,8 @@ const fs = require("fs");
 function createProfiles(accountId) {
     let profiles = {};
 
-    fs.readdirSync("./Config/DefaultProfiles").forEach(fileName => {
-        const profile = require(`../Config/DefaultProfiles/${fileName}`);
+    fs.readdirSync("./AccountProfiles").forEach(fileName => {
+        const profile = require(`../AccountProfiles/${fileName}`);
 
         profile.accountId = accountId;
         profile.created = new Date().toISOString();

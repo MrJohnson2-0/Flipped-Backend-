@@ -26,7 +26,7 @@ module.exports = {
     execute: async (interaction) => {
         await interaction.deferReply({ ephemeral: true });
         
-        if (!config.moderators.includes(interaction.user.id)) return interaction.editReply({ content: "You do not have moderator permissions.", ephemeral: true });
+        if (!config.mods.includes(interaction.user.id)) return interaction.editReply({ content: "You do not have moderator permissions.", ephemeral: true });
     
         const { options } = interaction;
         const targetUser = await User.findOne({ username_lower: (options.get("username").value).toLowerCase() });
