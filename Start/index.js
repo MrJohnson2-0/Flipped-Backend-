@@ -60,7 +60,7 @@ fs.readdirSync("./Redirects").forEach(fileName => {
 app.listen(PORT, () => {
     log.backend(`App started listening on port ${PORT}`);
     require("./XMPenis/xmpp.js");
-    require("./DiscordBot");
+    require("./DiscordBot") ;
 }).on("error", async (err) => {
     if (err.code == "EADDRINUSE") {
         log.error(`Port ${PORT} is already in use!\nClosing in 3 seconds...`);
