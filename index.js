@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const rateLimit = require("express-rate-limit");
 const jwt = require("jsonwebtoken");
-const cron = require('node-cron');
 const globals = JSON.parse(fs.readFileSync("./Globals/Globals.json").toString());
+const cron = require('node-cron');
 const log = require("./Debugging/Logs.js")
 const errorHandler = require("./Debugging/error.js")
 const functions = require("./Functions/functions.js")
@@ -41,7 +41,7 @@ mongoose.connect(globals.Mongodb.database, () => {
 });
 
 mongoose.connection.on("error", err => {
-    log.error("MongoDB failed to connect, please make sure you have MongoDB installed and running.");
+    log.errorHandler("MongoDB failed to connect, please make sure you have MongoDB installed and running.");
     throw err;
 });
 
@@ -63,7 +63,7 @@ app.listen(PORT, () => {
     require("./Bot/index.js") ;
 }).on("error", async (err) => {
     if (err.code == "EADDRINUSE") {
-        log.error(`Port ${PORT} is already in use!\nClosing in 3 seconds..`);
+        log.errorHandler(`Port ${PORT} is already in use!\nClosing in 3 seconds..`);
         await functions.sleep(3000)
         process.exit(0);
     } else throw err;
@@ -71,7 +71,7 @@ app.listen(PORT, () => {
 
 // if endpoint not found, return this error
 app.use((req, res, next) => {
-    error.createError(
+    errorHandler.createError(
         "errors.com.epicgames.common.not_found", 
         "Sorry the resource you were trying to find could not be found", 
         undefined, 1004, undefined, 404, res
